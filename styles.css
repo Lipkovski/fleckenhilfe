@@ -3,14 +3,12 @@
     --bg-color: #e0e0e0;
     --text-color: #333333;
     --text-muted: #666666;
-    --accent-color: #d32f2f; /* Signalrot nur als kleiner Akzent */
+    --accent-color: #d32f2f;
     
-    /* 3D-Schatten Hell (Weiche Kanten) */
     --shadow-out: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
     --shadow-in: inset 6px 6px 10px #bebebe, inset -6px -6px 10px #ffffff;
     --card-bg: #e0e0e0;
     
-    /* Warnung (Gedecktes, unaufdringliches Orange-Rot) */
     --warning-bg: #e0e0e0;
     --warning-text: #c62828;
     --warning-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
@@ -23,12 +21,10 @@
     --text-muted: #a0a0a0;
     --accent-color: #ff6b6b;
     
-    /* 3D-Schatten Dunkel */
     --shadow-out: 9px 9px 16px #131317, -9px -9px 16px #292931;
     --shadow-in: inset 6px 6px 10px #131317, inset -6px -6px 10px #292931;
     --card-bg: #1e1e24;
     
-    /* Warnung Dunkel */
     --warning-bg: #1e1e24;
     --warning-text: #ff8a80;
     --warning-shadow: 9px 9px 16px #131317, -9px -9px 16px #292931;
@@ -58,8 +54,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertikal zentriert */
-    align-items: center;    /* Horizontal zentriert */
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
@@ -113,7 +109,7 @@ h1 {
 }
 
 .select-wrapper {
-    display: block; /* Auf Mobile untereinander für bessere Touchflächen */
+    display: block;
     margin: 12px 0;
     position: relative;
     width: 100%;
@@ -133,12 +129,18 @@ select {
     -webkit-appearance: none;
     cursor: pointer;
     text-align: center;
-    text-align-last: center; /* Zentriert Text im Dropdown */
+    text-align-last: center;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Dauerhaft eingedrückter Zustand bei aktiver Auswahl */
+select.selected {
+    box-shadow: var(--shadow-in);
+    color: var(--text-muted);
 }
 
 select:focus {
     outline: none;
-    box-shadow: var(--shadow-in);
 }
 
 /* --- SKEUOMORPHER NOTFALL-BUTTON --- */
@@ -148,7 +150,7 @@ select:focus {
     font-size: 1.3rem;
     font-weight: 900;
     background: var(--bg-color);
-    color: var(--accent-color); /* Roter Akzent-Text */
+    color: var(--accent-color);
     border: none;
     border-radius: 24px;
     box-shadow: var(--shadow-out);
@@ -270,7 +272,7 @@ select:focus {
     line-height: 1.4;
 }
 
-/* TIMER INKORPORIERT */
+/* TIMER */
 .timer-btn {
     width: 100%;
     padding: 16px;
