@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flecken-Notfallhilfe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+
+    <main id="home-view" class="view">
+        <header>
+            <h1>Flecken-Hilfe</h1>
+        </header>
+
+        <form id="filter-form">
+            <div class="input-group">
+                <label for="stain-select">Art des Flecks</label>
+                <select id="stain-select" required>
+                    <option value="" disabled selected>Bitte wählen...</option>
+                    <option value="blut">Blut</option>
+                    <option value="kaffee">Kaffee</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="material-select">Material</label>
+                <select id="material-select" required>
+                    <option value="" disabled selected>Bitte wählen...</option>
+                    <option value="baumwolle">Baumwolle</option>
+                    <option value="seide">Seide</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submit-btn">Hilfe!</button>
+        </form>
+    </main>
+
+    <main id="result-view" class="view hidden">
+        <div id="warning-banner" class="hidden">
+            <p id="warning-text"></p>
+        </div>
+
+        <div class="result-content">
+            <button id="back-btn">← Zurück zur Auswahl</button>
+            <h2 id="result-title">Anleitungen</h2>
+            <div id="solutions-container"></div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
