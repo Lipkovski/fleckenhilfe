@@ -1,0 +1,166 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --border-color: #cccccc;
+    --accent-color: #000000;
+    --warning-bg: #cc0000;
+    --warning-text: #ffffff;
+    --card-bg: #f9f9f9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.view {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+/* Formular & Dropdowns */
+.input-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+select {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0;
+    background-color: var(--bg-color);
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Hilfe-Button & Zurück-Button */
+#submit-btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+#back-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: left;
+}
+
+/* Rote Zone */
+#warning-banner {
+    background-color: var(--warning-bg);
+    color: var(--warning-text);
+    padding: 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: -20px -20px 20px -20px;
+    text-transform: uppercase;
+}
+
+/* Karten */
+.result-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.card-summary {
+    font-size: 0.95rem;
+    color: #444444;
+}
+
+/* Aufgeklappter Zustand */
+.card-details {
+    display: none;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.card.open .card-details {
+    display: block;
+}
+
+.card-details ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.card-details li {
+    margin-bottom: 8px;
+}
+
+/* Timer */
+.timer-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.timer-btn.running {
+    background-color: #555555;
+}
