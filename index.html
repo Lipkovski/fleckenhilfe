@@ -6,13 +6,15 @@
     <title>Flecken-Notfallhilfe</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#f0f0f3" id="theme-color-meta">
+    <meta name="theme-color" content="#e0e0e0" id="theme-color-meta">
     <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
 
+    <!-- Persistent oben rechts -->
     <button id="darkmode-toggle" aria-label="Farbmodus wechseln">🌓</button>
 
+    <!-- STARTSEITE -->
     <main id="home-view" class="view">
         <header>
             <h1>Flecken-Hilfe</h1>
@@ -25,15 +27,26 @@
                     <select id="stain-select" required>
                         <option value="" disabled selected>einen Fleck...</option>
                         <option value="blut">Blut</option>
+                        <option value="rotwein">Rotwein</option>
                         <option value="kaffee">Kaffee</option>
+                        <option value="fett">Fett / Öl</option>
+                        <option value="gras">Gras</option>
+                        <option value="tomate">Tomatensauce</option>
+                        <option value="kuli">Kugelschreiber</option>
+                        <option value="schokolade">Schokolade</option>
+                        <option value="wachs">Kerzenwachs</option>
                     </select>
                 </div>
                 <span class="text-node">auf</span>
                 <div class="select-wrapper">
                     <select id="material-select" required>
                         <option value="" disabled selected>ein Material...</option>
-                        <option value="baumwolle">Baumwolle</option>
+                        <option value="baumwolle">Baumwolle / Leinen</option>
+                        <option value="wolle">Wolle</option>
                         <option value="seide">Seide</option>
+                        <option value="synthetik">Synthetik / Polyester</option>
+                        <option value="teppich">Teppich / Polster</option>
+                        <option value="jeans">Jeans / Denim</option>
                     </select>
                 </div>
                 <span class="text-node">gekippt!</span>
@@ -43,6 +56,7 @@
         </form>
     </main>
 
+    <!-- ERGEBNISSEITE -->
     <main id="result-view" class="view hidden">
         <div class="results-header">
             <button id="back-btn">← Zurück zur Auswahl</button>
