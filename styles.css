@@ -1,34 +1,63 @@
+/* --- FARBVARIABLEN & THEMES --- */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #111111;
-    --border-color: #cccccc;
-    --accent-color: #000000;
-    --warning-bg: #cc0000;
-    --warning-text: #ffffff;
-    --card-bg: #f9f9f9;
+    --bg-color: #eef2f7;
+    --text-color: #2c3e50;
+    --text-muted: #64748b;
+    --accent-color: #4a7c59; /* Gedecktes Salbeigrün */
+    --accent-text: #ffffff;
+    
+    /* Claymorphism Effekte Hell */
+    --clay-bg: #f8fafc;
+    --clay-box-shadow: 7px 7px 16px #d1d9e6, -7px -7px 16px #ffffff;
+    --clay-inset-shadow: inset -4px -4px 8px rgba(0,0,0,0.05), inset 4px 4px 8px rgba(255,255,255,0.8);
+    
+    /* Warnung Kachel Hell */
+    --warning-bg: #fbebeb;
+    --warning-text: #b91c1c;
+    --warning-box-shadow: 7px 7px 16px #d1d9e6, -7px -7px 16px #ffffff;
+    --warning-inset-shadow: inset -4px -4px 8px rgba(185,28,28,0.05), inset 4px 4px 8px rgba(255,255,255,0.8);
 }
 
+[data-theme="dark"] {
+    --bg-color: #181b22;
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-color: #3b6347;
+    --accent-text: #f1f5f9;
+    
+    /* Claymorphism Effekte Dunkel */
+    --clay-bg: #222731;
+    --clay-box-shadow: 7px 7px 16px #0f1115, -7px -7px 16px #212633;
+    --clay-inset-shadow: inset -4px -4px 8px rgba(0,0,0,0.2), inset 4px 4px 8px rgba(255,255,255,0.05);
+    
+    /* Warnung Kachel Dunkel */
+    --warning-bg: #2e1c1c;
+    --warning-text: #fca5a5;
+    --warning-box-shadow: 7px 7px 16px #0f1115, -7px -7px 16px #212633;
+    --warning-inset-shadow: inset -4px -4px 8px rgba(0,0,0,0.3), inset 4px 4px 8px rgba(255,255,255,0.05);
+}
+
+/* --- BASICS --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .view {
-    padding: 20px;
+    padding: 24px;
     max-width: 500px;
     margin: 0 auto;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 .hidden {
@@ -36,84 +65,178 @@ body {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     text-transform: uppercase;
     letter-spacing: -0.5px;
+    text-align: center;
 }
 
-/* Formular & Dropdowns */
-.input-group {
-    margin-bottom: 24px;
-}
-
-label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-select {
-    width: 100%;
-    padding: 16px;
-    font-size: 1.1rem;
-    border: 2px solid var(--border-color);
-    border-radius: 0;
-    background-color: var(--bg-color);
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-/* Hilfe-Button & Zurück-Button */
-#submit-btn {
-    width: 100%;
-    padding: 20px;
-    font-size: 1.3rem;
-    font-weight: 800;
-    background-color: var(--accent-color);
-    color: #ffffff;
+/* --- DARKMODE SWITCH --- */
+#darkmode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     border: none;
+    background: var(--clay-bg);
+    box-shadow: var(--clay-box-shadow);
     cursor: pointer;
-    text-transform: uppercase;
-    margin-top: 10px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#back-btn {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 20px;
-    padding: 10px 0;
+#darkmode-toggle:active {
+    box-shadow: var(--clay-inset-shadow);
+}
+
+/* --- COHESIVE SENTENCE STRUCTURE --- */
+.sentence-container {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 2;
+    margin-bottom: 40px;
     text-align: left;
 }
 
-/* Rote Zone */
-#warning-banner {
-    background-color: var(--warning-bg);
-    color: var(--warning-text);
-    padding: 20px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin: -20px -20px 20px -20px;
-    text-transform: uppercase;
+.text-node {
+    display: inline;
 }
 
-/* Karten */
+.select-wrapper {
+    display: inline-block;
+    position: relative;
+    margin: 4px 0;
+    vertical-align: middle;
+}
+
+select {
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 10px 36px 10px 16px;
+    color: var(--accent-color);
+    background: var(--clay-bg);
+    border: none;
+    border-radius: 14px;
+    box-shadow: var(--clay-box-shadow), var(--clay-inset-shadow);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    font-size: 0.7rem;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    pointer-events: none;
+}
+
+/* --- CLAYMORPHISM BUTTONS --- */
+#submit-btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    background-color: var(--accent-color);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 20px;
+    box-shadow: var(--clay-box-shadow);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+#submit-btn::before {
+    content: "";
+    position: absolute;
+    top: 4px; left: 6px; right: 6px; height: 35%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px 16px 8px 8px;
+    pointer-events: none;
+}
+
+#submit-btn:active {
+    box-shadow: inset -4px -4px 10px rgba(0,0,0,0.2), inset 4px 4px 10px rgba(0,0,0,0.4);
+}
+
+/* --- RESULT VIEW HEADER --- */
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-top: 8px;
+}
+
+#back-btn {
+    background: var(--clay-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--clay-box-shadow), var(--clay-inset-shadow);
+}
+
+#back-btn:active {
+    box-shadow: var(--clay-inset-shadow);
+}
+
+/* --- WARNUNG ALS CLAY-KACHEL --- */
+#warning-banner {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: var(--warning-box-shadow);
+    position: relative;
+}
+
+#warning-banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 20px;
+    box-shadow: var(--warning-inset-shadow);
+    pointer-events: none;
+}
+
+.warning-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* --- ERGEBNIS-KARTEN --- */
 .result-content h2 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 16px;
 }
 
 .card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 16px;
-    margin-bottom: 12px;
+    background: var(--clay-bg);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--clay-box-shadow), var(--clay-inset-shadow);
     cursor: pointer;
 }
 
@@ -125,15 +248,15 @@ select {
 
 .card-summary {
     font-size: 0.95rem;
-    color: #444444;
+    color: var(--text-muted);
 }
 
-/* Aufgeklappter Zustand */
+/* --- AUFGEKLAPPTE KACHEL --- */
 .card-details {
     display: none;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border-color);
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--text-muted);
 }
 
 .card.open .card-details {
@@ -142,25 +265,28 @@ select {
 
 .card-details ol {
     padding-left: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .card-details li {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
 }
 
-/* Timer */
+/* --- TIMER-BUTTON IN CLAY --- */
 .timer-btn {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: var(--accent-color);
-    color: #ffffff;
+    color: var(--accent-text);
     border: none;
+    border-radius: 14px;
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
+    box-shadow: var(--clay-box-shadow);
 }
 
 .timer-btn.running {
-    background-color: #555555;
+    background-color: var(--text-muted);
 }
