@@ -1,63 +1,66 @@
-/* --- FARBVARIABLEN & THEMES --- */
+/* --- SKEUOMORPHISMUS / NEUMORPHISMUS THEMES --- */
 :root {
-    --bg-color: #eef2f7;
-    --text-color: #2c3e50;
-    --text-muted: #64748b;
-    --accent-color: #4a7c59; /* Gedecktes Salbeigrün */
-    --accent-text: #ffffff;
+    --bg-color: #e0e0e0;
+    --text-color: #333333;
+    --text-muted: #666666;
+    --accent-color: #d32f2f; /* Signalrot nur als kleiner Akzent */
     
-    /* Claymorphism Effekte Hell */
-    --clay-bg: #f8fafc;
-    --clay-box-shadow: 7px 7px 16px #d1d9e6, -7px -7px 16px #ffffff;
-    --clay-inset-shadow: inset -4px -4px 8px rgba(0,0,0,0.05), inset 4px 4px 8px rgba(255,255,255,0.8);
+    /* 3D-Schatten Hell (Weiche Kanten) */
+    --shadow-out: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
+    --shadow-in: inset 6px 6px 10px #bebebe, inset -6px -6px 10px #ffffff;
+    --card-bg: #e0e0e0;
     
-    /* Warnung Kachel Hell */
-    --warning-bg: #fbebeb;
-    --warning-text: #b91c1c;
-    --warning-box-shadow: 7px 7px 16px #d1d9e6, -7px -7px 16px #ffffff;
-    --warning-inset-shadow: inset -4px -4px 8px rgba(185,28,28,0.05), inset 4px 4px 8px rgba(255,255,255,0.8);
+    /* Warnung (Gedecktes, unaufdringliches Orange-Rot) */
+    --warning-bg: #e0e0e0;
+    --warning-text: #c62828;
+    --warning-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
+    --warning-border: 2px solid #ffcdd2;
 }
 
 [data-theme="dark"] {
-    --bg-color: #181b22;
-    --text-color: #f1f5f9;
-    --text-muted: #94a3b8;
-    --accent-color: #3b6347;
-    --accent-text: #f1f5f9;
+    --bg-color: #1e1e24;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --accent-color: #ff6b6b;
     
-    /* Claymorphism Effekte Dunkel */
-    --clay-bg: #222731;
-    --clay-box-shadow: 7px 7px 16px #0f1115, -7px -7px 16px #212633;
-    --clay-inset-shadow: inset -4px -4px 8px rgba(0,0,0,0.2), inset 4px 4px 8px rgba(255,255,255,0.05);
+    /* 3D-Schatten Dunkel */
+    --shadow-out: 9px 9px 16px #131317, -9px -9px 16px #292931;
+    --shadow-in: inset 6px 6px 10px #131317, inset -6px -6px 10px #292931;
+    --card-bg: #1e1e24;
     
-    /* Warnung Kachel Dunkel */
-    --warning-bg: #2e1c1c;
-    --warning-text: #fca5a5;
-    --warning-box-shadow: 7px 7px 16px #0f1115, -7px -7px 16px #212633;
-    --warning-inset-shadow: inset -4px -4px 8px rgba(0,0,0,0.3), inset 4px 4px 8px rgba(255,255,255,0.05);
+    /* Warnung Dunkel */
+    --warning-bg: #1e1e24;
+    --warning-text: #ff8a80;
+    --warning-shadow: 9px 9px 16px #131317, -9px -9px 16px #292931;
+    --warning-border: 2px solid #5c2525;
 }
 
-/* --- BASICS --- */
+/* --- GLOBALE STYLES (ZENTRIERT FÜR MOBILE) --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5;
+    transition: background-color 0.4s, color 0.4s;
 }
 
 .view {
     padding: 24px;
-    max-width: 500px;
+    max-width: 450px;
     margin: 0 auto;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertikal zentriert */
+    align-items: center;    /* Horizontal zentriert */
+    text-align: center;
 }
 
 .hidden {
@@ -65,185 +68,173 @@ body {
 }
 
 h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    margin-bottom: 32px;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
 }
 
-/* --- DARKMODE SWITCH --- */
+/* --- PERSISTENTER DARKMODE BUTTON --- */
 #darkmode-toggle {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     border: none;
-    background: var(--clay-bg);
-    box-shadow: var(--clay-box-shadow);
+    background: var(--bg-color);
+    box-shadow: var(--shadow-out);
     cursor: pointer;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: box-shadow 0.2s;
 }
 
 #darkmode-toggle:active {
-    box-shadow: var(--clay-inset-shadow);
+    box-shadow: var(--shadow-in);
 }
 
-/* --- COHESIVE SENTENCE STRUCTURE --- */
+/* --- FLÜSSIGER SATZBAU --- */
 .sentence-container {
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 2;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2.2;
     margin-bottom: 40px;
-    text-align: left;
+    width: 100%;
 }
 
 .text-node {
-    display: inline;
+    display: inline-block;
+    margin: 0 4px;
 }
 
 .select-wrapper {
-    display: inline-block;
+    display: block; /* Auf Mobile untereinander für bessere Touchflächen */
+    margin: 12px 0;
     position: relative;
-    margin: 4px 0;
-    vertical-align: middle;
+    width: 100%;
 }
 
 select {
-    font-size: 1.15rem;
+    width: 100%;
+    font-size: 1.2rem;
     font-weight: 700;
-    padding: 10px 36px 10px 16px;
-    color: var(--accent-color);
-    background: var(--clay-bg);
+    padding: 16px;
+    color: var(--text-color);
+    background: var(--bg-color);
     border: none;
-    border-radius: 14px;
-    box-shadow: var(--clay-box-shadow), var(--clay-inset-shadow);
+    border-radius: 16px;
+    box-shadow: var(--shadow-out);
     appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
+    text-align: center;
+    text-align-last: center; /* Zentriert Text im Dropdown */
 }
 
-.select-wrapper::after {
-    content: "▼";
-    font-size: 0.7rem;
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent-color);
-    pointer-events: none;
+select:focus {
+    outline: none;
+    box-shadow: var(--shadow-in);
 }
 
-/* --- CLAYMORPHISM BUTTONS --- */
+/* --- SKEUOMORPHER NOTFALL-BUTTON --- */
 #submit-btn {
     width: 100%;
-    padding: 20px;
-    font-size: 1.2rem;
-    font-weight: 800;
-    background-color: var(--accent-color);
-    color: var(--accent-text);
+    padding: 22px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    background: var(--bg-color);
+    color: var(--accent-color); /* Roter Akzent-Text */
     border: none;
-    border-radius: 20px;
-    box-shadow: var(--clay-box-shadow);
+    border-radius: 24px;
+    box-shadow: var(--shadow-out);
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-}
-
-#submit-btn::before {
-    content: "";
-    position: absolute;
-    top: 4px; left: 6px; right: 6px; height: 35%;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 16px 16px 8px 8px;
-    pointer-events: none;
+    letter-spacing: 1px;
+    transition: box-shadow 0.1s ease, transform 0.1s ease;
 }
 
 #submit-btn:active {
-    box-shadow: inset -4px -4px 10px rgba(0,0,0,0.2), inset 4px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: var(--shadow-in);
+    transform: scale(0.98);
 }
 
-/* --- RESULT VIEW HEADER --- */
+/* --- ERGEBNISSEITE --- */
 .results-header {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
     margin-bottom: 24px;
-    padding-top: 8px;
 }
 
 #back-btn {
-    background: var(--clay-bg);
+    background: var(--bg-color);
     color: var(--text-color);
     border: none;
-    border-radius: 12px;
-    padding: 10px 16px;
+    border-radius: 14px;
+    padding: 12px 20px;
     font-size: 0.95rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: var(--clay-box-shadow), var(--clay-inset-shadow);
+    box-shadow: var(--shadow-out);
 }
 
 #back-btn:active {
-    box-shadow: var(--clay-inset-shadow);
+    box-shadow: var(--shadow-in);
 }
 
-/* --- WARNUNG ALS CLAY-KACHEL --- */
+/* SÄCHLICHE WARNKACHEL */
 #warning-banner {
+    width: 100%;
     background: var(--warning-bg);
     color: var(--warning-text);
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 24px;
-    box-shadow: var(--warning-box-shadow);
-    position: relative;
-}
-
-#warning-banner::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 20px;
-    box-shadow: var(--warning-inset-shadow);
-    pointer-events: none;
+    box-shadow: var(--warning-shadow);
+    border: var(--warning-border);
+    text-align: left;
 }
 
 .warning-title {
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 6px;
     letter-spacing: 0.5px;
 }
 
-/* --- ERGEBNIS-KARTEN --- */
+/* LÖSUNGSKARTEN */
+.result-content {
+    width: 100%;
+}
+
 .result-content h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 16px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .card {
-    background: var(--clay-bg);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 16px;
-    box-shadow: var(--clay-box-shadow), var(--clay-inset-shadow);
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-out);
     cursor: pointer;
+    text-align: left;
+    transition: box-shadow 0.2s;
 }
 
 .card-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 8px;
 }
 
 .card-summary {
@@ -251,12 +242,16 @@ select {
     color: var(--text-muted);
 }
 
-/* --- AUFGEKLAPPTE KACHEL --- */
+/* KLAPP-MECHANISMUS & LISTE */
 .card-details {
     display: none;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px dashed var(--text-muted);
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 2px dashed var(--bg-color);
+}
+
+.card.open {
+    box-shadow: var(--shadow-in);
 }
 
 .card.open .card-details {
@@ -265,28 +260,30 @@ select {
 
 .card-details ol {
     padding-left: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .card-details li {
-    margin-bottom: 12px;
-    font-size: 0.95rem;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.4;
 }
 
-/* --- TIMER-BUTTON IN CLAY --- */
+/* TIMER INKORPORIERT */
 .timer-btn {
     width: 100%;
-    padding: 14px;
-    background-color: var(--accent-color);
-    color: var(--accent-text);
+    padding: 16px;
+    background: var(--bg-color);
+    color: var(--text-color);
     border: none;
-    border-radius: 14px;
-    font-weight: 700;
+    border-radius: 16px;
+    font-weight: 800;
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: var(--clay-box-shadow);
+    box-shadow: var(--shadow-out);
 }
 
-.timer-btn.running {
-    background-color: var(--text-muted);
+.timer-btn:active, .timer-btn.running {
+    box-shadow: var(--shadow-in);
 }
