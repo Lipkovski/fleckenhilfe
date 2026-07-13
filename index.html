@@ -6,7 +6,7 @@
     <title>Flecken-Notfallhilfe</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#eef2f7" id="theme-color-meta">
+    <meta name="theme-color" content="#f0f0f3" id="theme-color-meta">
     <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
@@ -20,23 +20,23 @@
 
         <form id="filter-form">
             <div class="sentence-container">
-                <span class="text-node">Ich habe einen Fleck von</span>
+                <span class="text-node">Verdammt, ich habe</span>
                 <div class="select-wrapper">
                     <select id="stain-select" required>
-                        <option value="" disabled selected>Fleck auswählen</option>
+                        <option value="" disabled selected>einen Fleck...</option>
                         <option value="blut">Blut</option>
                         <option value="kaffee">Kaffee</option>
                     </select>
                 </div>
-                <span class="text-node">auf dem Material</span>
+                <span class="text-node">auf</span>
                 <div class="select-wrapper">
                     <select id="material-select" required>
-                        <option value="" disabled selected>Material auswählen</option>
+                        <option value="" disabled selected>ein Material...</option>
                         <option value="baumwolle">Baumwolle</option>
                         <option value="seide">Seide</option>
                     </select>
                 </div>
-                <span class="text-node">verursacht.</span>
+                <span class="text-node">gekippt!</span>
             </div>
 
             <button type="submit" id="submit-btn">Ich brauche HILFE!</button>
@@ -49,12 +49,12 @@
         </div>
 
         <div id="warning-banner" class="hidden">
-            <div class="warning-title">Wichtiger Sicherheitshinweis</div>
+            <div class="warning-title">Wichtig!</div>
             <p id="warning-text"></p>
         </div>
 
         <div class="result-content">
-            <h2>Empfohlene Maßnahmen</h2>
+            <h2>Deine Sofortmaßnahmen:</h2>
             <div id="solutions-container"></div>
         </div>
     </main>
